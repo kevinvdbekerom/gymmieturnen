@@ -6,4 +6,5 @@ class Gymmie
     @profile = profile
     @level = details['level']
   end
+
 end

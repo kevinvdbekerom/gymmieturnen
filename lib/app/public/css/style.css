@@ -1,0 +1,46 @@
+
+.gymmie {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    color:white;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #66afe9;
+    border: 2px solid #122b40;
+    margin: 5px;
+    padding: 5px;
+}
+
+.arabier {
+    background-color: #d58512;
+}
+
+.salto_vo {
+    background-color: #4cae4c;
+}
+
+.salto_ao {
+    background-color: #761c19;
+}
+
+/*cover up extra shadows*/
+.gymmie span {
+    display: block;
+    position: absolute;
+    top:1.1547005383792515px;
+    left: 0;
+    width:146px;
+    height:84.2931px;
+    z-index: 2;
+    background: inherit;
+}
+
+.gymmie .profile {
+    font-size: 20px;
+}
+
+.gymmie .level {
+    font-size: 40px;
+    font-style: normal;
+}
