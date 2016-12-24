@@ -12,6 +12,7 @@ class RenderEngine
     "<div class = 'col-md-2 gymmie #{profile}' data-category='#{profile}' >
       <p class = 'profile'>#{gymmie.profile}</p>
       <p class = 'level'>#{gymmie.level}</p>
+      <button class = 'button button-info'>
     </div>"
   end
 

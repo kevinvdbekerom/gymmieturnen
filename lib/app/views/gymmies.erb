@@ -1,5 +1,12 @@
 <h3>Alle gymmies die je kan behalen</h3>
 
+<!--Choose among difficulty groups-->
+<div id="filters" class="button-group">  <button class="button is-checked" data-filter="*">show all</button>
+  <button class="button" data-filter="partI">Deel 1</button>
+  <button class="button" data-filter="partII">Deel 2</button>
+  <button class="button" data-filter="partIII">Deel 3</button>
+</div>
+
 <div id="filters" class="button-group">  <button class="button is-checked" data-filter="*">show all</button>
   <button class="button" data-filter=".arabier">Arabier</button>
   <button class="button" data-filter=".salto_vo">Salto vo</button>
@@ -26,8 +33,31 @@
     // bind filter button click
     $('#filters').on( 'click', 'button', function() {
         var filterValue = $( this ).attr('data-filter');
+        // use filterFn if matches value
+        filterValue = filterFns[ filterValue ] || filterValue;
         $grid.isotope({ filter: filterValue });
     });
+
+    // filter functions
+    var filterFns = {
+        // gymmies part I
+        partI: function() {
+            var level = $(this).find('.level').text();
+            return parseInt(level) <= 3;
+        },
+        // gymmies part II
+        partII: function() {
+            var level = $(this).find('.level').text();
+            var parsedLevel = parseInt(level);
+            return (parsedLevel > 3 && parsedLevel <= 6);
+        },
+        // gymmies part III
+        partIII: function() {
+            var level = $(this).find('.level').text();
+            var parsedLevel = parseInt(level);
+            return (parsedLevel > 6 && parsedLevel <= 9);
+        },
+    };
 
     // bind sort button click
     $('#sorts').on( 'click', 'button', function() {
