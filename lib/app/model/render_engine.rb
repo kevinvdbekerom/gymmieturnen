@@ -8,7 +8,8 @@ class RenderEngine
   end
 
   def self.render_gymmie(gymmie)
-    "<div class = 'col-md-2 gymmie #{convert_style_tag(gymmie.profile)}'>
+    profile = convert_style_tag(gymmie.profile)
+    "<div class = 'col-md-2 gymmie #{profile}' data-category='#{profile}' >
       <p class = 'profile'>#{gymmie.profile}</p>
       <p class = 'level'>#{gymmie.level}</p>
     </div>"
@@ -19,7 +20,7 @@ class RenderEngine
     gymmies.each do |gymmie|
       gymmiesHtml += render_gymmie(gymmie)
     end
-    "<div class = 'row'>
+    "<div class = 'grid'>
      #{gymmiesHtml}
     </div>"
   end

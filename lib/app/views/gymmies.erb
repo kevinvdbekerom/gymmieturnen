@@ -1,2 +1,47 @@
 <h3>Alle gymmies die je kan behalen</h3>
+
+<div id="filters" class="button-group">  <button class="button is-checked" data-filter="*">show all</button>
+  <button class="button" data-filter=".arabier">Arabier</button>
+  <button class="button" data-filter=".salto_vo">Salto vo</button>
+  <button class="button" data-filter=".salto_ao">Salto ao</button>
+</div>
+
   <%= @content%>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="/js/isotope.pkgd.min.js"></script>
+<script>
+
+
+    // init Isotope
+    var $grid = $('.grid').isotope({
+        itemSelector: '.gymmie',
+        layoutMode: 'fitRows',
+        getSortData: {
+            profile: '.profile',
+            level: '.level'
+        }
+    });
+
+    // bind filter button click
+    $('#filters').on( 'click', 'button', function() {
+        var filterValue = $( this ).attr('data-filter');
+        $grid.isotope({ filter: filterValue });
+    });
+
+    // bind sort button click
+    $('#sorts').on( 'click', 'button', function() {
+        var sortByValue = $(this).attr('data-sort-by');
+        $grid.isotope({ sortBy: sortByValue });
+    });
+
+    // change is-checked class on buttons
+    $('.button-group').each( function( i, buttonGroup ) {
+        var $buttonGroup = $( buttonGroup );
+        $buttonGroup.on( 'click', 'button', function() {
+            $buttonGroup.find('.is-checked').removeClass('is-checked');
+            $( this ).addClass('is-checked');
+        });
+    });
+
+</script>
