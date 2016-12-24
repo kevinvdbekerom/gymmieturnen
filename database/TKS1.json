@@ -1,0 +1,29 @@
+{
+  "name" : "TKS1",
+  "members" : [
+    {
+      "first_name" : "Tina",
+      "last_name" : "Turn",
+      "gymmies" : [
+        {
+          "profile" : "Arabier",
+          "levels" : [
+            {
+              "level" : 1,
+              "completion_date" : "01-10-2016"
+            },
+            {
+              "level" : 2,
+              "completion_date" : "01-10-2016"
+            },
+            {
+              "level" : 3,
+              "completion_date" : "01-10-2016"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+
+}

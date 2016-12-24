@@ -1,15 +1,31 @@
 require 'sinatra/base'
 
-class ClubController < Sinatra::Application
-
-  puts (settings.root + '/../views')
+class ClubController < Sinatra::Base
 
   set :root, File.dirname(__FILE__)
-  set :views, "#{settings.root}/../views/*.erb"
+  set :views, File.expand_path(File.join(__FILE__, '..', '..', 'views'))
+
+
 
   # Home page
   get '/' do
     erb :index
+  end
+
+  # Groups management page
+  get '/groups' do
+    erb :groups
+  end
+
+
+  # Groups management page
+  get '/groups/:id' do
+    @groupId = params['id']
+    erb :members
+  end
+
+  get '/members/:id' do
+
   end
 
 
