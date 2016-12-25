@@ -103,3 +103,11 @@
     display: block;
     clear: both;
 }
+
+/* Bootstrap overrides */
+.btn-default {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #c7ddef;
+    margin-bottom: 2px;
+}

@@ -9,10 +9,11 @@ class RenderEngine
 
   def self.render_gymmie(gymmie)
     profile = convert_style_tag(gymmie.profile)
+    link = profile + gymmie.level.to_s
     "<div class = 'col-md-2 gymmie #{profile}' data-category='#{profile}' >
       <p class = 'profile'>#{gymmie.profile}</p>
       <p class = 'level'>#{gymmie.level}</p>
-      <button class = 'button button-info'>
+      <p><a href='/gymmies/#{link}' class='btn-lg btn-default' role='button'>Details</a></p>
     </div>"
   end
 
@@ -24,6 +25,16 @@ class RenderEngine
     "<div class = 'grid'>
      #{gymmiesHtml}
     </div>"
+  end
+
+  def self.render_gymmie_details(gymmie_info)
+    name = "<p><h2>#{gymmie_info.id}</h2><p>"
+    description = "<p>#{gymmie_info.description}<p>"
+    criteria = ""
+    gymmie_info.criteria.each do |requirement|
+      criteria << "<p>#{requirement}<p>"
+    end
+    html = name << description << criteria
   end
 
   # Given a string with spaces, convert to string with underscores
