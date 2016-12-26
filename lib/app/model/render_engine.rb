@@ -1,10 +1,46 @@
-require_relative 'gymmie'
+require_relative 'gymmie/gymmie'
 
 class RenderEngine
 
-  def self.render_member(member)
-    # Render Member object into html
+  def self.render_group(group)
+    "
+    <tr>
+    <td>#{group.name} </td>
+    <td>#{group.members.size}</td>
+    <td>
+      <a href='/groups/#{group.name}'>Bekijk leden</a> |
+      <a href='/groups/new'>Nieuwe groep</a> |
+      <a href='/groups/#{group.name}/new'>Nieuw lid</a>
+    </td>
+    </tr>
+    "
+  end
 
+  def self.render_groups(groups)
+    html = "<table class = 'table table-bordered'
+            <tr><th>Naam</th><th>Aantal leden</th><th>Acties</th></tr>"
+    groups.each do |group|
+      html << render_group(group)
+    end
+    html << "</table>"
+  end
+
+  def self.render_member(member)
+    "
+    <tr>
+    <td>#{member.first_name} </td>
+    <td>#{member.last_name}</td>
+    </tr>
+    "
+  end
+
+  def self.render_members(members)
+    html = "<table class = 'table table-bordered'
+            <tr><th>Voornaam</th><th>Achternaam</th><th>Acties</th></tr>"
+    members.each do |member|
+      html << render_member(member)
+    end
+    html << "</table>"
   end
 
   def self.render_gymmie(gymmie)

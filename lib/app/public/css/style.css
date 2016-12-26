@@ -1,3 +1,14 @@
+/*Homepage stuff*/
+.padder {
+    padding: 10px;
+}
+
+.marketing-header {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/*Gymmieturnen stuff*/
 
 .gymmie {
     position: relative;

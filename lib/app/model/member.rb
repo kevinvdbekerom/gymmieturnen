@@ -1,4 +1,4 @@
-require_relative 'gymmie'
+require_relative 'gymmie/gymmie'
 
 class Member
   attr_accessor :first_name, :last_name, :gymmies

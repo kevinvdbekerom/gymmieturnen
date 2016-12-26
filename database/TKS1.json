@@ -23,6 +23,29 @@
           ]
         }
       ]
+    },
+    {
+      "first_name" : "Rudy",
+      "last_name" : "Ringen",
+      "gymmies" : [
+        {
+          "profile" : "Salto vo",
+          "levels" : [
+            {
+              "level" : 1,
+              "completion_date" : "01-10-2016"
+            },
+            {
+              "level" : 2,
+              "completion_date" : "01-10-2016"
+            },
+            {
+              "level" : 6,
+              "completion_date" : "01-10-2016"
+            }
+          ]
+        }
+      ]
     }
   ]
 

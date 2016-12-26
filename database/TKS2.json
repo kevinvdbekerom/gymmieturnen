@@ -1,0 +1,26 @@
+{
+  "name" : "TKS2",
+  "members" : [
+    {
+      "first_name": "Tina",
+      "last_name": "Turn",
+      "gymmies" : []
+    },
+    {
+      "first_name": "Nina",
+      "last_name": "Nuriaki",
+      "gymmies" : []
+    },
+    {
+      "first_name": "Celina",
+      "last_name": "Geurts",
+      "gymmies" : []
+    },
+    {
+      "first_name": "Kees",
+      "last_name": "Kuwachenko",
+      "gymmies" : []
+    }
+  ]
+
+}

@@ -1,15 +1,18 @@
 require 'sinatra/base'
-require_relative '../../../lib/app/model/gymmies'
+require 'json'
+require_relative '../../../lib/app/model/gymmie/gymmies'
 require_relative '../model/render_engine'
-require_relative '../model/gymmie_database'
-require_relative '../model/gymmie_info'
+require_relative '../model/manager'
+require_relative '../model/group'
+require_relative '../model/gymmie/gymmie_database'
+require_relative '../model//gymmie/gymmie_info'
 
 class ClubController < Sinatra::Base
 
   set :root, File.join(File.dirname(__FILE__), '..')
   set :views, File.expand_path(File.join(__FILE__, '..', '..', 'views'))
 
-  attr_accessor :gymmies_database
+  attr_accessor :gymmies_database, :manager
 
   def initialize
     @gymmies_database = GymmieDatabase.new()
@@ -17,6 +20,11 @@ class ClubController < Sinatra::Base
                                     ['benen bij elkaar', 'voeten raken bank niet', 'handen plat op de bank'],
                                     'Door middel van wendsprongen over een bank gaan.')
     @gymmies_database.add_gymmie(gymmie_example)
+    @manager = Manager.new("HOSEMA")
+    # json = File.read(File.expand_path(
+    #     File.join(__FILE__, '..', '..', '..', '..', '/database/TKS1.json')))
+    # data = JSON.parse(json)
+    # @manager.add_group(data)
     super
   end
 
@@ -24,6 +32,33 @@ class ClubController < Sinatra::Base
   get '/' do
     erb :index
   end
+
+  # Groups management page
+  get '/groups' do
+    @content = RenderEngine.render_groups(@manager.groups)
+    erb :groups
+  end
+
+  # Groups members page
+  get '/groups/:id' do
+    @groupId = params['id']
+    @content = RenderEngine.render_members(@manager.group(@groupId).members)
+    erb :members
+  end
+
+  post '/groups' do
+    group_name = params[:group_name]
+    if (manager.contains_group(group_name)) then 'Naam van groep bestaat al!'
+    else
+      @manager.add_group(group_name)
+      redirect '/groups'
+    end
+  end
+
+  get '/members/:id' do
+
+  end
+
 
   # Gymmies information (general)
   get '/gymmies' do
@@ -37,25 +72,6 @@ class ClubController < Sinatra::Base
     gymmie = @gymmies_database.find(id)
     RenderEngine.render_gymmie_details(gymmie)
   end
-
-  # Groups management page
-  get '/groups' do
-    erb :groups
-  end
-
-
-  # Groups members page
-  get '/groups/:id' do
-    @groupId = params['id']
-    erb :members
-  end
-
-  get '/members/:id' do
-
-  end
-
-
-
 
   # start the server if ruby file executed directly
   run! if app_file == $0
