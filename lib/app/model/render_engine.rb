@@ -58,7 +58,7 @@ class RenderEngine
     gymmies.each do |gymmie|
       gymmiesHtml += render_gymmie(gymmie)
     end
-    "<div class = 'grid'>
+    "<div class = 'grid grid--clickable'>
      #{gymmiesHtml}
     </div>"
   end

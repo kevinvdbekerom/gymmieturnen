@@ -60,28 +60,6 @@
         $grid.isotope({ filter: filterValue });
     });
 
-
-//    // filter functions
-//    var filterFns = {
-//        // gymmies part I
-//        partI: function() {
-//            var level = $(this).find('.level').text();
-//            return parseInt(level) <= 3;
-//        },
-//        // gymmies part II
-//        partII: function() {
-//            var level = $(this).find('.level').text();
-//            var parsedLevel = parseInt(level);
-//            return (parsedLevel > 3 && parsedLevel <= 6);
-//        },
-//        // gymmies part III
-//        partIII: function() {
-//            var level = $(this).find('.level').text();
-//            var parsedLevel = parseInt(level);
-//            return (parsedLevel > 6 && parsedLevel <= 9);
-//        },
-//    };
-
     // bind sort button click
     $('#sorts').on( 'click', 'button', function() {
         var sortByValue = $(this).attr('data-sort-by');
@@ -105,5 +83,12 @@
         }
         return value;
     }
+
+    // change size of item by toggling gigante class
+    $grid.on( 'click', '.gymmie', function() {
+        $(this).toggleClass('extended');
+        // trigger layout after item size changes
+        $grid.isotope('layout');
+    });
 
 </script>

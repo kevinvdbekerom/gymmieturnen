@@ -5,7 +5,7 @@ require_relative '../model/render_engine'
 require_relative '../model/manager'
 require_relative '../model/group'
 require_relative '../model/gymmie/gymmie_database'
-require_relative '../model//gymmie/gymmie_info'
+require_relative '../model/gymmie/gymmie_info'
 
 class ClubController < Sinatra::Base
 
@@ -21,10 +21,6 @@ class ClubController < Sinatra::Base
                                     'Door middel van wendsprongen over een bank gaan.')
     @gymmies_database.add_gymmie(gymmie_example)
     @manager = Manager.new("HOSEMA")
-    # json = File.read(File.expand_path(
-    #     File.join(__FILE__, '..', '..', '..', '..', '/database/TKS1.json')))
-    # data = JSON.parse(json)
-    # @manager.add_group(data)
     super
   end
 
@@ -55,6 +51,7 @@ class ClubController < Sinatra::Base
     end
   end
 
+  # Show member details and gymmies
   get '/members/:id' do
 
   end
