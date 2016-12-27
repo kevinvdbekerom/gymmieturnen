@@ -10,7 +10,7 @@ class Gymmies
   end
 
   def fill_catalog
-    profiles = ['Arabier', 'Salto vo', 'Salto ao', 'Overslag']
+    profiles = ['Arabier', 'Salto vo', 'Salto ao', 'Overslag', 'Losom', 'Vrije sprongen', 'Kip', 'Reus', 'Flanken', 'Balanceren', 'Flik flak']
     profiles.each do |profile|
       (1..9).each do |level|
         @gymmies_catalog << Gymmie.new(profile, {"level" => level})

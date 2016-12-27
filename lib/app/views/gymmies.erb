@@ -1,18 +1,22 @@
 <h3>Alle gymmies die je kan behalen</h3>
 
+<div class = "filters">
 <!--Choose among difficulty groups-->
-<div id="filters" class="button-group">  <button class="button is-checked" data-filter="*">show all</button>
-  <button class="button" data-filter="partI">Deel 1</button>
-  <button class="button" data-filter="partII">Deel 2</button>
-  <button class="button" data-filter="partIII">Deel 3</button>
+<div class="button-group" data-filter-group = "part">
+  <button class="button is-checked" data-filter="*">show all</button>
+  <button class="button" data-filter=".part_1">Deel 1</button>
+  <button class="button" data-filter=".part_2">Deel 2</button>
+  <button class="button" data-filter=".part_3">Deel 3</button>
 </div>
 
-<div id="filters" class="button-group">  <button class="button is-checked" data-filter="*">show all</button>
+<div class="button-group" data-filter-group = "profile">
+  <button class="button is-checked" data-filter="*">show all</button>
   <button class="button" data-filter=".arabier">Arabier</button>
   <button class="button" data-filter=".salto_vo">Salto vo</button>
   <button class="button" data-filter=".salto_ao">Salto ao</button>
 </div>
 
+</div>
 
   <%= @content%>
 
@@ -31,34 +35,44 @@
         }
     });
 
+    filters = {};
+
     // bind filter button click
-    $('#filters').on( 'click', 'button', function() {
-        var filterValue = $( this ).attr('data-filter');
-        // use filterFn if matches value
-        filterValue = filterFns[ filterValue ] || filterValue;
+    $('.filters').on( 'click', 'button', function() {
+        var $this = $(this);
+        // get group key
+        var $buttonGroup = $this.parents('.button-group');
+        var filterGroup = $buttonGroup.attr('data-filter-group');
+        // set filter for group
+        filters[ filterGroup ] = $this.attr('data-filter');
+        // combine filters
+        var filterValue = concatValues( filters );
+        console.log(filterValue)
+
         $grid.isotope({ filter: filterValue });
     });
 
-    // filter functions
-    var filterFns = {
-        // gymmies part I
-        partI: function() {
-            var level = $(this).find('.level').text();
-            return parseInt(level) <= 3;
-        },
-        // gymmies part II
-        partII: function() {
-            var level = $(this).find('.level').text();
-            var parsedLevel = parseInt(level);
-            return (parsedLevel > 3 && parsedLevel <= 6);
-        },
-        // gymmies part III
-        partIII: function() {
-            var level = $(this).find('.level').text();
-            var parsedLevel = parseInt(level);
-            return (parsedLevel > 6 && parsedLevel <= 9);
-        },
-    };
+
+//    // filter functions
+//    var filterFns = {
+//        // gymmies part I
+//        partI: function() {
+//            var level = $(this).find('.level').text();
+//            return parseInt(level) <= 3;
+//        },
+//        // gymmies part II
+//        partII: function() {
+//            var level = $(this).find('.level').text();
+//            var parsedLevel = parseInt(level);
+//            return (parsedLevel > 3 && parsedLevel <= 6);
+//        },
+//        // gymmies part III
+//        partIII: function() {
+//            var level = $(this).find('.level').text();
+//            var parsedLevel = parseInt(level);
+//            return (parsedLevel > 6 && parsedLevel <= 9);
+//        },
+//    };
 
     // bind sort button click
     $('#sorts').on( 'click', 'button', function() {
@@ -74,5 +88,14 @@
             $( this ).addClass('is-checked');
         });
     });
+
+    // flatten object by concatting values
+    function concatValues( obj ) {
+        var value = '';
+        for ( var prop in obj ) {
+            value += obj[ prop ];
+        }
+        return value;
+    }
 
 </script>

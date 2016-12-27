@@ -15,12 +15,17 @@
     width: 150px;
     height: 150px;
     color:white;
+
     border-radius: 15px;
     text-align: center;
     background-color: #66afe9;
     border: 2px solid #122b40;
     margin: 5px;
     padding: 5px;
+}
+
+.gymmie h1 {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .arabier {
@@ -32,7 +37,54 @@
 }
 
 .salto_ao {
+    background-color: #4cae4c;
+}
+
+.overslag {
+    background-color: #d58512;
+}
+
+.losom {
+    background-color: #66afe9;
+}
+
+.vrije_sprongen {
+    background-color: #c9302c;
+}
+
+.reus {
+    background-color: #66afe9;
+}
+
+.kip {
+    background-color: #66afe9;
+}
+
+.flanken {
     background-color: #761c19;
+}
+
+.balanceren {
+    background-color: #761c19;
+}
+
+.flik_flak {
+    background-color: #d58512;
+}
+
+.part_1 h1 {
+    color: saddlebrown;
+    font-size: 300%;
+}
+
+.part_2 h1 {
+    color:  silver;
+    font-size: 300%;
+}
+
+.part_3 h1 {
+    color:  gold;
+    font-size: 300%;
 }
 
 .gymmie .profile {

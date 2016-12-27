@@ -46,9 +46,9 @@ class RenderEngine
   def self.render_gymmie(gymmie)
     profile = convert_style_tag(gymmie.profile)
     link = profile + gymmie.level.to_s
-    "<div class = 'col-md-2 gymmie #{profile}' data-category='#{profile}' >
+    "<div class = 'col-md-2 gymmie #{profile} part_#{(gymmie.level + 2) / 3}' data-category='#{profile} part_#{(gymmie.level + 2) / 3}'>
       <p class = 'profile'>#{gymmie.profile}</p>
-      <p class = 'level'>#{gymmie.level}</p>
+      <p class = 'level'><h1>#{gymmie.level}</h1></p>
       <p><a href='/gymmies/#{link}' class='btn-lg btn-default' role='button'>Details</a></p>
     </div>"
   end
