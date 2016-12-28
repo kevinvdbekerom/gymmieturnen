@@ -1,6 +1,9 @@
 require_relative 'gymmie/gymmie'
+require_relative 'gymmie/gymmie_database'
 
 class RenderEngine
+
+
 
   def self.render_group(group)
     "
@@ -49,7 +52,7 @@ class RenderEngine
     "<div class = 'col-md-2 gymmie #{profile} part_#{(gymmie.level + 2) / 3}' data-category='#{profile} part_#{(gymmie.level + 2) / 3}'>
       <p class = 'profile'>#{gymmie.profile}</p>
       <p class = 'level'><h1>#{gymmie.level}</h1></p>
-      <p><a href='/gymmies/#{link}' class='btn-lg btn-default' role='button'>Details</a></p>
+      <span class = 'description'> #{render_gymmie_details(gymmie)}</span>
     </div>"
   end
 
@@ -63,14 +66,15 @@ class RenderEngine
     </div>"
   end
 
-  def self.render_gymmie_details(gymmie_info)
-    name = "<p><h2>#{gymmie_info.id}</h2><p>"
-    description = "<p>#{gymmie_info.description}<p>"
-    criteria = ""
+  def self.render_gymmie_details(gymmie)
+    gymmie_info = GymmieDatabase.find(gymmie.id)
+    description = "<p>#{gymmie_info.description}</p>"
+    criteria = "<ol>"
     gymmie_info.criteria.each do |requirement|
-      criteria << "<p>#{requirement}<p>"
+      criteria << "<li>#{requirement}</li>"
     end
-    html = name << description << criteria
+    criteria << "</ol>"
+    html =  description << criteria
   end
 
   # Given a string with spaces, convert to string with underscores

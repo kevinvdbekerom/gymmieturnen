@@ -87,6 +87,16 @@
     // change size of item by toggling gigante class
     $grid.on( 'click', '.gymmie', function() {
         $(this).toggleClass('extended');
+        console.log($(this))
+        var spanElObject = $(this).find('span');
+        var spanEl = spanElObject[0];
+        if (spanElObject.css("visibility") === 'visible') {
+            spanEl.style.visibility = "hidden";
+        } else {
+            spanEl.style.visibility = "visible";
+        }
+        console.log(spanEl);
+
         // trigger layout after item size changes
         $grid.isotope('layout');
     });

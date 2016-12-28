@@ -15,11 +15,7 @@ class ClubController < Sinatra::Base
   attr_accessor :gymmies_database, :manager
 
   def initialize
-    @gymmies_database = GymmieDatabase.new()
-    gymmie_example = GymmieInfo.new('arabier1',
-                                    ['benen bij elkaar', 'voeten raken bank niet', 'handen plat op de bank'],
-                                    'Door middel van wendsprongen over een bank gaan.')
-    @gymmies_database.add_gymmie(gymmie_example)
+
     @manager = Manager.new("HOSEMA")
     super
   end

@@ -7,4 +7,8 @@ class Gymmie
     @level = details['level']
   end
 
+  def id
+    @profile.downcase << @level.to_s
+  end
+
 end
