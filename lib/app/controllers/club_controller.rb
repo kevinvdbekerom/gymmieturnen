@@ -34,7 +34,7 @@ class ClubController < Sinatra::Base
   # Groups members page
   get '/groups/:id' do
     @groupId = params['id']
-    @content = RenderEngine.render_members(@manager.group(@groupId).members)
+   # @content = RenderEngine.render_members(@manager.group(@groupId).members)
     erb :members
   end
 
@@ -45,6 +45,11 @@ class ClubController < Sinatra::Base
       @manager.add_group(group_name)
       redirect '/groups'
     end
+  end
+
+  # Add member to group
+  post '/groups/:name' do
+
   end
 
   # Show member details and gymmies

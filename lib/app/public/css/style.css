@@ -22,6 +22,7 @@
     border: 2px solid #122b40;
     margin: 5px;
     padding: 5px;
+
 }
 
 div.gymmie:hover {
@@ -100,7 +101,7 @@ div.gymmie:hover {
     font-style: normal;
 }
 
-.gymmie.extended {
+.extended {
     width: 300px;
     height: 300px;
     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 15px 20px 0 rgba(0, 0, 0, 0.19);

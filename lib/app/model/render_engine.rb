@@ -11,16 +11,20 @@ class RenderEngine
     <td>#{group.name} </td>
     <td>#{group.members.size}</td>
     <td>
-      <a href='/groups/#{group.name}'>Bekijk leden</a> |
-      <a href='/groups/new'>Nieuwe groep</a> |
-      <a href='/groups/#{group.name}/new'>Nieuw lid</a>
+      <button type='button' class='btn btn-primary toggler' data-prod-cat='#{group.name}'>
+      Leden <span class='badge'>#{group.members.size}</span>
+      <span class = 'glyphicon glyphicon-triangle-bottom'>
+      </button>
+
+      <a href = '/groups/addmember/#{group.name}' class = 'btn btn-primary'>Nieuw lid</a>
     </td>
     </tr>
+   #{render_members(group.members, group.name)}
     "
   end
 
   def self.render_groups(groups)
-    html = "<table class = 'table table-bordered'
+    html = "<table class = 'table table-bordered table-hover'
             <tr><th>Naam</th><th>Aantal leden</th><th>Acties</th></tr>"
     groups.each do |group|
       html << render_group(group)
@@ -28,22 +32,29 @@ class RenderEngine
     html << "</table>"
   end
 
-  def self.render_member(member)
+  def self.render_member(member, group_name)
     "
-    <tr>
-    <td>#{member.first_name} </td>
+    <tr class = 'cat_#{group_name}' style='display:none;'>
+    <td>#{member.first_name}</td>
     <td>#{member.last_name}</td>
+    <td>
+      <a href = '/members/#{member.first_name}_#{member.last_name}' class = 'btn btn-primary'>Details </a>
+      <a href = '/members/#{member.first_name}_#{member.last_name}' class = 'btn btn-primary'>Overzetten</a>
+    </td>
     </tr>
     "
   end
 
-  def self.render_members(members)
-    html = "<table class = 'table table-bordered'
-            <tr><th>Voornaam</th><th>Achternaam</th><th>Acties</th></tr>"
+  def self.render_members(members, group_name)
+    html = "<tr class = 'cat_#{group_name}' style='display:none;'>"
+    html << "<td>Voornaam</td><td>Achternaam</td><td>Acties</td>"
+    # html = "<table class = 'table table-bordered'
+    #         <tr><th>Voornaam</th><th>Achternaam</th><th>Acties</th></tr>"
     members.each do |member|
-      html << render_member(member)
+      html << render_member(member, group_name)
     end
-    html << "</table>"
+    html << "</tr>"
+    # html << "</table>"
   end
 
   def self.render_gymmie(gymmie)

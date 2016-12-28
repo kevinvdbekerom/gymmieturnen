@@ -9,12 +9,26 @@
 <div class = "col-md-8">
 <form action = "/groups" method="POST">
   <div class="form-group row">
-    <label for="group_name" class="col-xs-2">Naam van nieuwe groep</label>
+    <label for="group_name" class="col-xs-3">Naam van nieuwe groep</label>
     <div class="col-xs-4">
       <input class="form-control" type="text" id="group_name" name="group_name">
     </div>
+    <button type="submit" class="btn btn-primary">Voeg toe!</button>
   </div>
-  <button type="submit" class="btn btn-primary">Voeg toe!</button>
+
 </form>
   <p><%= @error_message%></p>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script>
+
+    // Expand row of table when requesting to view details of members!
+    $(document).ready(function(){
+        $(".toggler").click(function(e){
+            e.preventDefault();
+            $('.cat_'+$(this).attr('data-prod-cat')).fadeToggle(200)
+        });
+    });
+</script>
